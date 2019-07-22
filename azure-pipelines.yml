@@ -22,4 +22,4 @@ steps:
     cliProjectKey: 'POC'
     cliProjectName: 'POC'
     cliSources: '.'
-    extraProperties: 
+- task: SonarQubeAnalyze@4
