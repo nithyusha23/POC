@@ -16,8 +16,10 @@ steps:
 
 - task: SonarQubePrepare@4
   inputs:
+    SonarQube: 'Sonarqube'
     scannerMode: 'CLI'
     configMode: 'manual'
     cliProjectKey: 'POC'
     cliProjectName: 'POC'
     cliSources: '.'
+    extraProperties: 
