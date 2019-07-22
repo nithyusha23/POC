@@ -1,0 +1,47 @@
+<div class="card">    
+  <div class="card-header"    
+       *ngIf="project">    
+    {{pageTitle + ": " + project.displayName}}    
+  </div>    
+  <div class="card-body"    
+       *ngIf="project">    
+    <div class="row">    
+      <div class="col-md-8">    
+        <div class="row">    
+          <div class="col-md-3">Name:</div>    
+          <div class="col-md-6">{{project.displayName}}</div>    
+        </div>    
+        <div class="row">    
+          <div class="col-md-3">Sponsor:</div>    
+          <div class="col-md-6">{{project.sponsor}}</div>    
+        </div>    
+        <div class="row">    
+          <div class="col-md-3">SupplyRx ID:</div>    
+          <div class="col-md-6">{{project.alternateId[0].value}}</div>    
+        </div>    
+        <div class="row">    
+          <div class="col-md-3">Study Name:</div>    
+          <div class="col-md-6">{{project.sponsorStudyName}}</div>    
+        </div>    
+      </div>    
+    </div>    
+    <div class="row mt-4">    
+      <div class="col-md-4">    
+        <button class="btn btn-outline-secondary mr-3"    
+                style="width:80px"    
+                (click)="onBack()">    
+          <i class="fa fa-chevron-left"></i> Back    
+        </button>    
+        <button class="btn btn-outline-primary"    
+                style="width:80px"    
+                [routerLink]="['/projects', project.sponsor, project.displayName, 'edit']">    
+          Edit    
+        </button>    
+      </div>    
+    </div>    
+  </div>    
+  <div class="alert alert-danger"    
+       *ngIf="errorMessage">    
+    {{errorMessage}}    
+  </div>    
+</div>

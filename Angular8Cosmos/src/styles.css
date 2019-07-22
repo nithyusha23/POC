@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";  
+@import "~font-awesome/css/font-awesome.min.css";
+
+.site-logo {
+    width: 120px;
+    height: 45px;
+}
+
+@media(min-width:768px){
+    .min-vh-md-100 {
+        min-height: 100vh!important;
+    }
+}
