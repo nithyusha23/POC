@@ -8,18 +8,32 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: Default
+  demands: java
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: SonarQubePrepare@4
+  displayName: 'Prepare sonar analysis for Angular code'
+  inputs:
+    SonarQube: Sonarqube
+    scannerMode: CLI
+    configMode: manual
+    cliProjectKey: 'POC-Angular'
+    cliProjectName: 'POC-Angular'
+    cliSources: '.\Angular8Cosmos'
+
+- task: SonarQubeAnalyze@4
+  displayName: 'Run Code Analysis for Angular Code'
 
 - task: SonarQubePrepare@4
+  displayName: 'Prepare analysis on SonarQube for API project'
   inputs:
-    SonarQube: 'Sonarqube'
-    scannerMode: 'CLI'
-    configMode: 'manual'
-    cliProjectKey: 'POC'
-    cliProjectName: 'POC'
-    cliSources: '.'
+    SonarQube: Sonarqube
+    scannerMode: CLI
+    configMode: manual
+    cliProjectKey: 'POC-API'
+    cliProjectName: 'POC-API'
+    cliSources: '.\TenantAPI'
+
 - task: SonarQubeAnalyze@4
+  displayName: 'Run Code Analysis for API'
